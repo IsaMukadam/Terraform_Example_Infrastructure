@@ -1,0 +1,25 @@
+tasks:
+  - name: setup
+    before: |
+      # Install Terraform - https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli
+      ./bin/terraform_cli_install.sh
+
+
+      # Install AWS CLI - https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
+      ./bin/aws_cli_install.sh
+
+      # Install Python and Boto3
+      sudo apt-get update
+      sudo apt-get install -y python3-pip
+      pip3 install boto3
+    command: |
+      # Verify installations
+      terraform --version
+      aws --version
+      python3 --version
+      pip3 show boto3
+
+# Getting AWS Creds As ENV Variables
+# export AWS_ACCESS_KEY_ID=
+# export AWS_SECRET_ACCESS_KEY=
+# export AWS_DEFAULT_REGION=eu-west-2
